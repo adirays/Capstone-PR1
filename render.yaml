@@ -1,0 +1,23 @@
+services:
+  # Backend: FastAPI
+  - type: web
+    name: manufacturing-backend
+    env: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.18
+
+  # Frontend: Streamlit
+  - type: web
+    name: manufacturing-frontend
+    env: python
+    buildCommand: pip install -r frontend/requirements.txt
+    startCommand: streamlit run frontend/app.py --server.port $PORT --server.address 0.0.0.0
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.18
+      # If the frontend needs to talk to the backend, you'll need to set this after deployment
+      # - key: BACKEND_URL
+      #   value: https://manufacturing-backend.onrender.com
