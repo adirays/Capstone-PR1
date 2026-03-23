@@ -19,5 +19,5 @@ services:
       - key: PYTHON_VERSION
         value: 3.9.18
       # If the frontend needs to talk to the backend, you'll need to set this after deployment
-      # - key: BACKEND_URL
-      #   value: https://manufacturing-backend.onrender.com
+      - key: BACKEND_URL
+        value: https://manufacturing-backend.onrender.com

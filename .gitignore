@@ -4,3 +4,7 @@ __pycache__/
 *.pth
 .env
 .ipynb_checkpoints/
+
+# Ignore presentation files
+*.ppt
+*.pptx

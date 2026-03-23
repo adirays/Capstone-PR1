@@ -1,0 +1,22 @@
+# Use official Python runtime as a parent image
+FROM python:3.10-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the requirements file into the container at /app
+COPY backend/requirements.txt .
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the backend code and required data/model directories
+COPY backend/ ./backend/
+COPY model/ ./model/
+COPY data/ ./data/
+
+# Expose the port FastAPI runs on
+EXPOSE 8000
+
+# Command to run the FastAPI app
+CMD ["uvicorn", "backend.app:app", "--host", "0.0.0.0", "--port", "8000"]
